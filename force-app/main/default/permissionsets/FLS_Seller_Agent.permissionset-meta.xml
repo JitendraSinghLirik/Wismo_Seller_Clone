@@ -87,12 +87,5 @@
         <viewAllFields>true</viewAllFields>
         <viewAllRecords>true</viewAllRecords>
     </objectPermissions>
-    <tabSettings>
-        <tab>Product_Backlog__c</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
-    <tabSettings>
-        <tab>Product_Inventory__c</tab>
-        <visibility>Visible</visibility>
-    </tabSettings>
+    
 </PermissionSet>
