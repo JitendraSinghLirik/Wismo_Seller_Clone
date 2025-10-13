@@ -4,7 +4,7 @@
         <members>*</members>
         <name>ApexClass</name>
     </types>
-    <types>
+    <types>git add force-app/main/default/permissionsets/FLS_Seller_Agent.permissionset-meta.xml
         <members>*</members>
         <name>ApexComponent</name>
     </types>
