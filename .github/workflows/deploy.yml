@@ -1,0 +1,31 @@
+name: Auto Deploy to Salesforce
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Install Salesforce CLI
+        run: npm install @salesforce/cli --global
+
+      - name: Authenticate to Salesforce Org
+        run: sf org login sfdx-url --sfdx-url-file authUrl.txt
+        env:
+          SFDX_AUTH_URL: ${{ secrets.SF_AUTH_URL }}
+
+      - name: Deploy Metadata
+        run: sf project deploy start --source-dir force-app --target-org Wismo_Seller
+
+      - name: Run ProductSeeder Apex
+        run: |
+          echo "ProductSeeder.createProductsAndChildren();" > script.apex
+          sf apex run --file script.apex --target-org Wismo_Seller
